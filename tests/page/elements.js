@@ -1,0 +1,23 @@
+module.exports = {
+  emailInput: '[data-testid="ui-email-signup-input"]',
+  signUpButton: 'button[type="submit"]',
+  emailField: '#email',
+  registerButton: '#signup-submit',
+  logInButton: '//a[normalize-space(text())=\'Log in\']',
+  logInEmail: '[data-testid="username"]',
+  loginError: '[data-testid = "form-error--content"]',
+  logInContinueButton: '#login-submit',
+  passwordInput: '#password',
+  profileButton: '[data-testid="header-member-menu-avatar"]',
+  logoutButton: '[data-testid="account-menu-logout"]',
+  endSessionButton: '[data-testid="logout-button"]',
+  editProfileButton: '[data-testid="account-menu-profile"]',
+  nameInput: '#username',
+  saveButton: '//button[normalize-space(text())=\'Guardar\']',
+  confirmationMessage: 'div[role="alert"]',
+  createMenuButton: '[data-testid="header-create-menu-button"]',
+  createBoardButton: '[data-testid="header-create-board-button"]',
+  boardTitleInput: '[data-testid="create-board-title-input"]',
+  boardSubmitButton: '[data-testid="create-board-submit-button"]',
+  boardNameDisplay: '[data-testid="board-name-display"]'
+};
