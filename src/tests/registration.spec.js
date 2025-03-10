@@ -1,6 +1,6 @@
-const SignupPage = require('../page/signup.page');
-const credentials = require('../utils/test.data.');
-const { getCurrentUrl } = require("../utils/helpers/common");
+const SignupPage = require('../po/pages/signup.page');
+const credentials = require('../configs/test.data.');
+const { getCurrentUrl } = require("../configs/utils/helpers/common");
 
 describe('Register Page Tests', () => {
   it('Should enter email and complete signup', async () => {

@@ -1,6 +1,6 @@
-const LoginPage = require('../page/login.page');
-const BoardPage = require('../page/board.page');
-const credentials = require('../utils/test.data.');
+const LoginPage = require('../po/pages/login.page');
+const BoardPage = require('../po/pages/board.page');
+const credentials = require('../configs/test.data.');
 
 describe('Board Page Tests', () => {
   it('Should create board successfully', async () => {

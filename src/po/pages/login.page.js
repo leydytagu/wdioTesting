@@ -1,4 +1,4 @@
-const {getCurrentUrl, openUrl} = require("../utils/helpers/common");
+const {getCurrentUrl, openUrl} = require("../../configs/utils/helpers/common");
 
 class LoginPage {
   get usernameField() {

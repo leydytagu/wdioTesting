@@ -21,7 +21,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        ['./tests/specs/**/*.spec.js'],
+        ['../tests/**/*.spec.js'],
     ],
     // Patterns to exclude.
     exclude: [
@@ -167,20 +167,20 @@ exports.config = {
      * for that worker as well as modify runtime environments in an async fashion.
      * @param  {string} cid      capability id (e.g 0-0)
      * @param  {object} caps     object containing capabilities for session that will be spawn in the worker
-     * @param  {object} specs    specs to be run in the worker process
+     * @param  {object} tests    tests to be run in the worker process
      * @param  {object} args     object that will be merged with the main configuration once worker is initialized
      * @param  {object} execArgv list of string arguments passed to the worker process
      */
-    // onWorkerStart: function (cid, caps, specs, args, execArgv) {
+    // onWorkerStart: function (cid, caps, tests, args, execArgv) {
     // },
     /**
      * Gets executed just after a worker process has exited.
      * @param  {string} cid      capability id (e.g 0-0)
      * @param  {number} exitCode 0 - success, 1 - fail
-     * @param  {object} specs    specs to be run in the worker process
+     * @param  {object} tests    tests to be run in the worker process
      * @param  {number} retries  number of retries used
      */
-    // onWorkerEnd: function (cid, exitCode, specs, retries) {
+    // onWorkerEnd: function (cid, exitCode, tests, retries) {
     // },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -190,7 +190,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {string} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs, cid) {
+    // beforeSession: function (config, capabilities, tests, cid) {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -199,7 +199,7 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
+    // before: function (capabilities, tests) {
     // },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -267,7 +267,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
+    // after: function (result, capabilities, tests) {
     // },
     /**
      * Gets executed right after terminating the webdriver session.
@@ -275,7 +275,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // afterSession: function (config, capabilities, specs) {
+    // afterSession: function (config, capabilities, tests) {
     // },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error

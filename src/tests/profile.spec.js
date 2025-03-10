@@ -1,6 +1,6 @@
-const LoginPage = require('../page/login.page');
-const ProfilePage = require('../page/profile.page');
-const credentials = require('../utils/test.data.');
+const LoginPage = require('../po/pages/login.page');
+const ProfilePage = require('../po/pages/profile.page');
+const credentials = require('../configs/test.data.');
 
 describe('Edit Profile Page Tests', () => {
   it('Should update username successfully', async () => {

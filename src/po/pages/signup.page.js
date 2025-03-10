@@ -1,4 +1,4 @@
-const { openUrl } = require("../utils/helpers/common");
+const { openUrl } = require("../../configs/utils/helpers/common");
 
 class SignupPage {
   get emailField() {

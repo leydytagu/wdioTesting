@@ -1,9 +1,9 @@
-const LoginPage = require('../page/login.page');
-const credentials = require('../utils/test.data.');
-const { getCurrentUrl } = require("../utils/helpers/common");
+const LoginPage = require('../po/pages/login.page');
+const credentials = require('../configs/test.data.');
+const { getCurrentUrl } = require("../configs/utils/helpers/common");
 
 describe('Login Page Tests', () => {
-  it('Should redirect login page', async () => {
+  it('Should redirect login pages', async () => {
     await LoginPage.open();
     await LoginPage.clickLoginButton();
 
