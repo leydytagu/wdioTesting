@@ -1,30 +1,38 @@
-const elements = require('./elements');
-
 class BoardPage {
-  async boardNameDisplay() {
-    return await $(elements.boardNameDisplay);
+  get createBoardTitleField() {
+    return $('[data-testid="create-board-title-input"]');
   }
 
-  async clickMenuButton() {
-    const createMenuButton = await $(elements.createMenuButton);
-    await createMenuButton.click();
+  get boardNameDisplayField() {
+    return $('[data-testid="board-name-display"]');
   }
 
-  async clickBoardButton() {
-    const createBoardButton = await $(elements.createBoardButton);
-    await createBoardButton.click();
+  get headerCreateMenuButton() {
+    return $('[data-testid="header-create-menu-button"]');
   }
 
-  async setTitle(title) {
-    const boardTitleInput = await $(elements.boardTitleInput);
-    await boardTitleInput.waitForExist({timeout: 5000});
-    await boardTitleInput.setValue(title);
+  get headerCreateBoardButton() {
+    return $('[data-testid="header-create-board-button"]');
   }
 
-  async clickSubmitButton() {
-    const boardSubmitButton = await $(elements.boardSubmitButton);
-    await boardSubmitButton.waitForExist({timeout: 5000});
-    await boardSubmitButton.click();
+  get createBoardSubmitButton() {
+    return $('[data-testid="create-board-submit-button"]');
+  }
+
+  async enterCreateBoardTitle(title) {
+    await this.createBoardTitleField.setValue(title);
+  }
+
+  async clickHeaderCreateMenuButton() {
+    await this.headerCreateMenuButton.click();
+  }
+
+  async clickHeaderCreateBoardButton() {
+    await this.headerCreateBoardButton.click();
+  }
+
+  async clickCreateBoardSubmitButton() {
+    await this.createBoardSubmitButton.click();
   }
 }
 

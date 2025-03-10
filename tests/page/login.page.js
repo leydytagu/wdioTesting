@@ -1,51 +1,73 @@
-const elements = require('./elements');
-const credentials = require("../config");
+const { getCurrentUrl } = require("../utils/helpers/common");
 
 class LoginPage {
+  get usernameField() {
+    return $('[data-testid="username"]');
+  }
+
+  get passwordField() {
+    return $('#password');
+  }
+
+  get continueButton() {
+    return $('#login-submit');
+  }
+
+  get loginButton() {
+    const selector = '//a[normalize-space(text())="Log in"]';
+    return $(selector);
+  }
+
+  get profileButton() {
+    return $('[data-testid="header-member-menu-avatar"]');
+  }
+
+  get accountMenuLogoutButton() {
+    return $('[data-testid="account-menu-logout"]');
+  }
+
+  get logoutButton() {
+    return $('[data-testid="logout-button"]');
+  }
+
+  get errorMessage() {
+    return $('#error-message');
+  }
+
   async getLoginError() {
-    return await $(elements.loginError);
+    return await $('[data-testid = "form-error--content"]');
   }
 
   async open() {
     await browser.url('https://trello.com/');
   }
 
-  async clickLoginButton() {
-    const loginButton = await $(elements.logInButton);
-    await loginButton.waitForClickable({timeout: 5000});
-    await loginButton.click();
-  }
-
   async enterEmail(email) {
-    const emailInput = await $(elements.logInEmail);
-    await emailInput.waitForExist({timeout: 5000});
-    await emailInput.setValue(email);
-  }
-
-  async clickContinueButton() {
-    const logInContinueButton = await $(elements.logInContinueButton);
-    await logInContinueButton.click();
+    await this.usernameField.setValue(email);
   }
 
   async enterPassword(password) {
-    const passwordInput = await $(elements.passwordInput);
-    await passwordInput.waitForExist({timeout: 5000});
-    await passwordInput.setValue(password);
+    await this.passwordField.setValue(password);
+  }
+
+  async clickContinueButton() {
+    await this.continueButton.click();
+  }
+
+  async clickLoginButton() {
+    await this.loginButton.click();
   }
 
   async clickProfileButton() {
-    const logInContinueButton = await $(elements.profileButton);
-    await logInContinueButton.click();
+    await this.profileButton.click();
+  }
+
+  async clickAccountMenuLogoutButton() {
+    await this.accountMenuLogoutButton.click();
   }
 
   async clickLogoutButton() {
-    const logInContinueButton = await $(elements.logoutButton);
-    await logInContinueButton.click();
-  }
-
-  async clickEndSessionButton() {
-    const logInContinueButton = await $(elements.endSessionButton);
-    await logInContinueButton.click();
+    await this.logoutButton.click();
   }
 
   async login(user, email, password) {
@@ -60,14 +82,14 @@ class LoginPage {
 
   async logout() {
     await this.clickProfileButton();
+    await this.clickAccountMenuLogoutButton();
     await this.clickLogoutButton();
-    await this.clickEndSessionButton();
   }
 
   async isLoggedIn(user) {
     await browser.waitUntil(
       async () =>
-        (await browser.getUrl()).includes(`trello.com/u/${user}/boards`), {timeout: 15000}
+        (await getCurrentUrl()).includes(`trello.com/u/${user}/boards`), {timeout: 15000}
     );
   }
 }

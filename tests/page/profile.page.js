@@ -1,32 +1,39 @@
-const elements = require('./elements');
-
 class ProfilePage {
-  async getConfirmationMessage() {
-    return await $(elements.confirmationMessage);
+  get usernameField() {
+    return $('#username');
   }
 
-  async open() {
-    await browser.url('https://trello.com/u/testingwdio066/boards');
+  get alertField() {
+    return $('div[role="alert"]');
+  }
+
+  get headerMemberMenuAvatarButton() {
+    return $('[data-testid="header-member-menu-avatar"]');
+  }
+
+  get accountMenuProfileButton() {
+    return $('[data-testid="account-menu-profile"]');
+  }
+
+  get saveButton() {
+    const selector = '//button[normalize-space(text())=\'Guardar\']';
+    return $(selector);
   }
 
   async clickProfileButton() {
-    const profileButton = await $(elements.profileButton);
-    await profileButton.click();
+    await this.headerMemberMenuAvatarButton.click();
   }
 
   async clickEditProfileButton() {
-    const editButton = await $(elements.editProfileButton);
-    await editButton.click();
+    await this.accountMenuProfileButton.click();
   }
 
   async enterName(name) {
-    const nameInput = await $(elements.nameInput);
-    await nameInput.setValue(name);
+    await this.usernameField.setValue(name);
   }
 
   async clickSaveButton() {
-    const saveButton = await $(elements.saveButton);
-    await saveButton.click();
+    await this.saveButton.click();
   }
 }
 

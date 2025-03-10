@@ -1,36 +1,40 @@
-const elements = require('./elements');
+const { openUrl } = require("../utils/helpers/common");
 
 class SignupPage {
+  get emailField() {
+    return $('#email');
+  }
+
+  get uiEmailSignupField() {
+    return $('[data-testid="ui-email-signup-input"]');
+  }
+
+  get signupButton() {
+    return $('button[type="submit"]');
+  }
+
+  get signupSubmitButton() {
+    return $('#signup-submit');
+  }
+
   async open() {
-    await browser.url('https://trello.com/');
+    await openUrl('https://trello.com/');
   }
 
   async enterEmail(email) {
-    const emailInput = await $(elements.emailInput);
-    await emailInput.waitForExist({timeout: 5000});
-    await emailInput.setValue(email);
-  }
-
-  async clickSignUp() {
-    const signUpButton = await $(elements.signUpButton);
-    await signUpButton.waitForExist({timeout: 5000});
-    await signUpButton.click();
+    await this.uiEmailSignupField.setValue(email);
   }
 
   async enterSignupEmail(email) {
-    const emailField = await $(elements.emailField);
-    await emailField.waitForExist({timeout: 5000});
-    await emailField.setValue(email);
+    await this.emailField.setValue(email);
+  }
+
+  async clickSignupButton() {
+    await this.signupButton.click();
   }
 
   async clickRegister() {
-    const registerButton = await $(elements.registerButton);
-    await registerButton.waitForExist({timeout: 5000});
-    await registerButton.click();
-  }
-
-  async getCurrentUrl() {
-    return await browser.getUrl();
+    await this.signupSubmitButton.click();
   }
 }
 
