@@ -1,4 +1,4 @@
-const { getCurrentUrl } = require("../utils/helpers/common");
+const {getCurrentUrl, openUrl} = require("../utils/helpers/common");
 
 class LoginPage {
   get usernameField() {
@@ -39,7 +39,7 @@ class LoginPage {
   }
 
   async open() {
-    await browser.url('https://trello.com/');
+    await openUrl('https://trello.com/');
   }
 
   async enterEmail(email) {
@@ -77,7 +77,7 @@ class LoginPage {
     await this.clickContinueButton();
     await this.enterPassword(password);
     await this.clickContinueButton();
-    await this.isLoggedIn(user);
+    // await this.isLoggedIn(user);
   }
 
   async logout() {

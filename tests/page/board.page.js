@@ -1,4 +1,28 @@
 class BoardPage {
+  get workspaceExample() {
+    return $('[title="Example"]');
+  }
+
+  get showMenuField() {
+    return $('[aria-label="Mostrar menú"]');
+  }
+
+  get closeWorkSpaceButton() {
+    return $('[data-testid="RemoveIcon"]');
+  }
+
+  get popoverCloseBoardConfirmButton() {
+    return $('[data-testid="popover-close-board-confirm"]');
+  }
+
+  get closeBoardDeleteBoardButton() {
+    return $('[data-testid="close-board-delete-board-button"]');
+  }
+
+  get closeBoardDeleteBoardConfirmButton() {
+    return $('[data-testid="close-board-delete-board-confirm-button"]');
+  }
+
   get createBoardTitleField() {
     return $('[data-testid="create-board-title-input"]');
   }
@@ -33,6 +57,30 @@ class BoardPage {
 
   async clickCreateBoardSubmitButton() {
     await this.createBoardSubmitButton.click();
+  }
+
+  async clickWorkspaceExample() {
+    await this.workspaceExample.click();
+  }
+
+  async clickShowMenuField() {
+    await this.showMenuField.click();
+  }
+
+  async clickCloseBoardButton() {
+    await this.closeWorkSpaceButton.click();
+  }
+
+  async clickCloseBoardConfirmButton() {
+    await this.popoverCloseBoardConfirmButton.click();
+  }
+
+  async clickDeleteBoardButton() {
+    await this.closeBoardDeleteBoardButton.click();
+  }
+
+  async clickConfirmDeleteBoardButton() {
+    await this.closeBoardDeleteBoardConfirmButton.click();
   }
 }
 
