@@ -1,6 +1,11 @@
+const BasePage = require("./base.page");
 const { openUrl } = require("../../configs/utils/helpers/common");
 
-class SignupPage {
+class SignupPage extends BasePage {
+  constructor() {
+    super('https://trello.com/');
+  }
+
   get emailField() {
     return $('#email');
   }

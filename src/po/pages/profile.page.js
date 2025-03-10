@@ -1,4 +1,10 @@
-class ProfilePage {
+const BasePage = require("./base.page");
+
+class ProfilePage extends BasePage {
+  constructor() {
+    super('https://trello.com/');
+  }
+
   get usernameField() {
     return $('#username');
   }
@@ -8,7 +14,7 @@ class ProfilePage {
   }
 
   get headerMemberMenuAvatarButton() {
-    return $('[data-testid="header-member-menu-avatar"]');
+    return this.header.profileBtn.click();
   }
 
   get accountMenuProfileButton() {

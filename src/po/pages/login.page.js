@@ -1,6 +1,13 @@
-const {getCurrentUrl, openUrl} = require("../../configs/utils/helpers/common");
+const BasePage = require("./base.page");
+const { Header } = require("../components");
+const { getCurrentUrl } = require("../../configs/utils/helpers/common");
 
-class LoginPage {
+class LoginPage extends BasePage {
+  constructor() {
+    super('https://trello.com/');
+    this.header = new Header();
+  }
+
   get usernameField() {
     return $('[data-testid="username"]');
   }
@@ -18,10 +25,6 @@ class LoginPage {
     return $(selector);
   }
 
-  get profileButton() {
-    return $('[data-testid="header-member-menu-avatar"]');
-  }
-
   get accountMenuLogoutButton() {
     return $('[data-testid="account-menu-logout"]');
   }
@@ -36,10 +39,6 @@ class LoginPage {
 
   async getLoginError() {
     return await $('[data-testid = "form-error--content"]');
-  }
-
-  async open() {
-    await openUrl('https://trello.com/');
   }
 
   async enterEmail(email) {
@@ -59,7 +58,7 @@ class LoginPage {
   }
 
   async clickProfileButton() {
-    await this.profileButton.click();
+    await this.header.profileBtn.click();
   }
 
   async clickAccountMenuLogoutButton() {

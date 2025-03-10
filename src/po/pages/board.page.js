@@ -1,4 +1,10 @@
-class BoardPage {
+const BasePage = require("./base.page");
+
+class BoardPage extends BasePage {
+  constructor() {
+    super('https://trello.com/');
+  }
+
   get workspaceExample() {
     return $('[title="Example"]');
   }
