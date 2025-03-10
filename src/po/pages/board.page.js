@@ -84,4 +84,4 @@ class BoardPage {
   }
 }
 
-module.exports = new BoardPage();
+module.exports = BoardPage;

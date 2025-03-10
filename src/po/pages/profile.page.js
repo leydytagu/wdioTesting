@@ -37,4 +37,4 @@ class ProfilePage {
   }
 }
 
-module.exports = new ProfilePage();
+module.exports = ProfilePage;

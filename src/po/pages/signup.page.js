@@ -38,4 +38,4 @@ class SignupPage {
   }
 }
 
-module.exports = new SignupPage();
+module.exports = SignupPage;

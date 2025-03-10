@@ -1,36 +1,36 @@
-const LoginPage = require('../po/pages/login.page');
-const BoardPage = require('../po/pages/board.page');
+const { page } = require('../po');
+
 const credentials = require('../configs/test.data.');
 
 describe('Board Page Tests', () => {
   it('Should create board successfully', async () => {
-    await LoginPage.login(credentials.user, credentials.email, credentials.password);
+    await page('login').login(credentials.user, credentials.email, credentials.password);
 
-    await BoardPage.clickHeaderCreateMenuButton();
-    await BoardPage.clickHeaderCreateBoardButton();
+    await page('board').clickHeaderCreateMenuButton();
+    await page('board').clickHeaderCreateBoardButton();
 
-    await BoardPage.enterCreateBoardTitle('Example');
+    await page('board').enterCreateBoardTitle('Example');
 
-    await BoardPage.clickCreateBoardSubmitButton();
+    await page('board').clickCreateBoardSubmitButton();
 
-    const boardNameDisplay = await BoardPage.boardNameDisplayField;
+    const boardNameDisplay = await page('board').boardNameDisplayField;
     await boardNameDisplay.waitForDisplayed({timeout: 5000});
     expect(await boardNameDisplay.isDisplayed()).toBe(true);
 
-    await LoginPage.logout();
+    await page('login').logout();
   });
 
   it('Should remove board successfully', async () => {
-    await LoginPage.login(credentials.user, credentials.email, credentials.password);
+    await page('login').login(credentials.user, credentials.email, credentials.password);
 
-    await BoardPage.clickWorkspaceExample();
-    await BoardPage.clickShowMenuField();
-    await BoardPage.clickCloseBoardButton();
-    await BoardPage.clickCloseBoardConfirmButton();
-    await BoardPage.clickDeleteBoardButton();
-    await BoardPage.clickConfirmDeleteBoardButton();
+    await page('board').clickWorkspaceExample();
+    await page('board').clickShowMenuField();
+    await page('board').clickCloseBoardButton();
+    await page('board').clickCloseBoardConfirmButton();
+    await page('board').clickDeleteBoardButton();
+    await page('board').clickConfirmDeleteBoardButton();
 
-    const workspaceExample = await BoardPage.workspaceExample;
+    const workspaceExample = await page('board').workspaceExample;
     expect(await workspaceExample.isDisplayed()).toBe(false);
 
   });

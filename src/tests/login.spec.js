@@ -1,46 +1,47 @@
-const LoginPage = require('../po/pages/login.page');
+const { page } = require('../po');
+
 const credentials = require('../configs/test.data.');
 const { getCurrentUrl } = require("../configs/utils/helpers/common");
 
 describe('Login Page Tests', () => {
   it('Should redirect login pages', async () => {
-    await LoginPage.open();
-    await LoginPage.clickLoginButton();
+    await page('login').open();
+    await page('login').clickLoginButton();
 
     const currentUrl = await getCurrentUrl();
     expect(currentUrl).toContain('https://id.atlassian.com/login');
   });
 
   it('Should login with invalid credentials', async () => {
-    await LoginPage.open();
-    await LoginPage.clickLoginButton();
+    await page('login').open();
+    await page('login').clickLoginButton();
 
-    await LoginPage.enterEmail(credentials.email);
-    await LoginPage.clickContinueButton();
+    await page('login').enterEmail(credentials.email);
+    await page('login').clickContinueButton();
 
-    await LoginPage.enterPassword('wrongPassword!');
-    await LoginPage.clickContinueButton();
+    await page('login').enterPassword('wrongPassword!');
+    await page('login').clickContinueButton();
 
-    const errorMessage = await LoginPage.getLoginError();
+    const errorMessage = await page('login').getLoginError();
     await errorMessage.waitForDisplayed({timeout: 5000});
     expect(await errorMessage.isDisplayed()).toBe(true);
   });
 
   it('Should login with valid credentials', async () => {
-    await LoginPage.open();
-    await LoginPage.clickLoginButton();
+    await page('login').open();
+    await page('login').clickLoginButton();
 
-    await LoginPage.enterEmail(credentials.email);
-    await LoginPage.clickContinueButton();
+    await page('login').enterEmail(credentials.email);
+    await page('login').clickContinueButton();
 
-    await LoginPage.enterPassword(credentials.password);
-    await LoginPage.clickContinueButton();
+    await page('login').enterPassword(credentials.password);
+    await page('login').clickContinueButton();
 
-    await LoginPage.isLoggedIn(credentials.user)
+    await page('login').isLoggedIn(credentials.user)
 
     const expectedUrl = await getCurrentUrl();
     expect(expectedUrl).toContain(`trello.com/u/${credentials.user}/boards`);
 
-    await LoginPage.logout();
+    await page('login').logout();
   });
 });

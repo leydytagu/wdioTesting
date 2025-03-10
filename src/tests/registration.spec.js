@@ -1,14 +1,15 @@
-const SignupPage = require('../po/pages/signup.page');
-const credentials = require('../configs/test.data.');
+const { page } = require("../po/pages");
 const { getCurrentUrl } = require("../configs/utils/helpers/common");
+
+const credentials = require('../configs/test.data.');
 
 describe('Register Page Tests', () => {
   it('Should enter email and complete signup', async () => {
-    await SignupPage.open();
-    await SignupPage.enterEmail(credentials.email);
-    await SignupPage.clickSignupButton();
-    await SignupPage.enterSignupEmail(credentials.email);
-    await SignupPage.clickRegister();
+    await page('signup').open();
+    await page('signup').enterEmail(credentials.email);
+    await page('signup').clickSignupButton();
+    await page('signup').enterSignupEmail(credentials.email);
+    await page('signup').clickRegister();
 
     await browser.waitUntil(
       async () => (await getCurrentUrl()).includes('https://id.atlassian.com/signup')
