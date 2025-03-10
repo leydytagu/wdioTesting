@@ -1,5 +1,5 @@
 const SignupPage = require('../page/signup.page');
-const credentials = require('../config');
+const credentials = require('../utils/test.data.');
 const { getCurrentUrl } = require("../utils/helpers/common");
 
 describe('Register Page Tests', () => {

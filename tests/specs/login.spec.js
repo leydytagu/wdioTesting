@@ -1,5 +1,5 @@
 const LoginPage = require('../page/login.page');
-const credentials = require('../config');
+const credentials = require('../utils/test.data.');
 const { getCurrentUrl } = require("../utils/helpers/common");
 
 describe('Login Page Tests', () => {
