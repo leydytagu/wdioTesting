@@ -33,5 +33,6 @@ describe('Board Page Tests', () => {
     const workspaceExample = await page('board').workspaceExample;
     expect(await workspaceExample.isDisplayed()).toBe(false);
 
+    await page('login').logout();
   });
 });

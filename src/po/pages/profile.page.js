@@ -26,8 +26,8 @@ class ProfilePage extends BasePage {
     return $(selector);
   }
 
-  async clickProfileButton() {
-    await this.headerMemberMenuAvatarButton.click();
+  async clickHeaderProfileButton() {
+    await this.header.profileBtn.click();
   }
 
   async clickEditProfileButton() {
