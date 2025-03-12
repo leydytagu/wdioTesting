@@ -1,4 +1,5 @@
 const { page } = require('../po');
+const { assert, expect } = require('chai');
 
 const credentials = require('../configs/test.data.');
 
@@ -15,7 +16,7 @@ describe('Board Page Tests', () => {
 
     const boardNameDisplay = await page('board').boardNameDisplayField;
     await boardNameDisplay.waitForDisplayed({timeout: 5000});
-    expect(await boardNameDisplay.isDisplayed()).toBe(true);
+    assert.equal(await boardNameDisplay.isDisplayed(), true);
 
     await page('login').logout();
   });
@@ -31,7 +32,7 @@ describe('Board Page Tests', () => {
     await page('board').clickConfirmDeleteBoardButton();
 
     const workspaceExample = await page('board').workspaceExample;
-    expect(await workspaceExample.isDisplayed()).toBe(false);
+    expect(await workspaceExample.isDisplayed()).to.equal(false);
 
     await page('login').logout();
   });

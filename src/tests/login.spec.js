@@ -1,4 +1,5 @@
 const { page } = require('../po');
+const { assert, expect } = require('chai');
 
 const credentials = require('../configs/test.data.');
 const { getCurrentUrl } = require("../configs/utils/helpers/common");
@@ -9,7 +10,7 @@ describe('Login Page Tests', () => {
     await page('login').clickLoginButton();
 
     const currentUrl = await getCurrentUrl();
-    expect(currentUrl).toContain('https://id.atlassian.com/login');
+    expect(currentUrl).to.contain('https://id.atlassian.com/login');
   });
 
   it('Should login with invalid credentials', async () => {
@@ -24,7 +25,7 @@ describe('Login Page Tests', () => {
 
     const errorMessage = await page('login').getLoginError();
     await errorMessage.waitForDisplayed({timeout: 5000});
-    expect(await errorMessage.isDisplayed()).toBe(true);
+    assert.equal(await errorMessage.isDisplayed(), true);
   });
 
   it('Should login with valid credentials', async () => {
@@ -39,8 +40,8 @@ describe('Login Page Tests', () => {
 
     await page('login').isLoggedIn(credentials.user)
 
-    const expectedUrl = await getCurrentUrl();
-    expect(expectedUrl).toContain(`trello.com/u/${credentials.user}/boards`);
+    const currentUrl = await getCurrentUrl();
+    expect(currentUrl).to.contain(`trello.com/u/${credentials.user}/boards`);
 
     await page('login').logout();
   });
