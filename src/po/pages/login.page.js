@@ -83,7 +83,7 @@ class LoginPage extends BasePage {
     await this.clickContinueButton();
     await this.enterPassword(password);
     await this.clickContinueButton();
-    // await this.isLoggedIn(user);
+    await this.isLoggedIn(user);
   }
 
   async logout() {
