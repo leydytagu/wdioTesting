@@ -1,7 +1,7 @@
 const apiHelper = require('../../configs/utils/helpers/apiHelper');
 const { expect } = require('chai');
 
-describe.only('Trello API Tests', () => {
+describe('Trello API Tests', () => {
   let boardId;
 
   it('Should create a board in Trello', async () => {
