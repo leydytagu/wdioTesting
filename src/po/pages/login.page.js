@@ -46,7 +46,28 @@ class LoginPage extends BasePage {
   }
 
   async enterPassword(password) {
+
+    await browser.waitUntil(
+      async () => (await this.passwordField.isDisplayed()),
+      {
+        timeout: 5000,
+        timeoutMsg: "Password field is not available"
+      }
+    );
     await this.passwordField.setValue(password);
+
+    /*
+    const passwordField = await this.passwordField;
+    await browser.waitUntil(
+      async () => (await passwordField.isDisplayed()),
+      {
+        timeout: 15000,
+        timeoutMsg: "Password field is not available"
+      }
+    );
+
+    // await browser.pause(1000);
+    await passwordField.setValue(password);*/
   }
 
   async clickContinueButton() {
@@ -88,7 +109,10 @@ class LoginPage extends BasePage {
   async isLoggedIn(user) {
     await browser.waitUntil(
       async () =>
-        (await getCurrentUrl()).includes(`trello.com/u/${user}/boards`), {timeout: 15000}
+        (await getCurrentUrl()).includes(`trello.com/u/${user}/boards`), {
+        timeout: 15000,
+        timeoutMsg: "Home url not found"
+      }
     );
   }
 }

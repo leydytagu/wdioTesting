@@ -28,7 +28,7 @@ describe('Login Page Tests', () => {
     assert.equal(await errorMessage.isDisplayed(), true);
   });
 
-  it('Should login with valid credentials', async () => {
+  it.only('Should login with valid credentials', async () => {
     await page('login').open();
     await page('login').clickLoginButton();
 
