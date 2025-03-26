@@ -33,7 +33,7 @@ Before getting started, make sure you have the following installed:
 
 ---
 
-## ⚙Configuration
+## Configuration
 1. **Environment Variables:**  
    Create a `.env` file in the project root:
    ```plaintext
@@ -118,5 +118,4 @@ This project was created by Leydy Tarazona (leydy.tarazona@gmail.com). If you wi
 
 ---
 
-🎯 Thanks for using and contributing to WDIO Testing! 🚀✨
 
