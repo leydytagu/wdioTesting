@@ -46,7 +46,6 @@ class LoginPage extends BasePage {
   }
 
   async enterPassword(password) {
-
     await browser.waitUntil(
       async () => (await this.passwordField.isDisplayed()),
       {
@@ -55,19 +54,6 @@ class LoginPage extends BasePage {
       }
     );
     await this.passwordField.setValue(password);
-
-    /*
-    const passwordField = await this.passwordField;
-    await browser.waitUntil(
-      async () => (await passwordField.isDisplayed()),
-      {
-        timeout: 15000,
-        timeoutMsg: "Password field is not available"
-      }
-    );
-
-    // await browser.pause(1000);
-    await passwordField.setValue(password);*/
   }
 
   async clickContinueButton() {
