@@ -6,7 +6,7 @@ This project is a **test automation framework** based on **WebdriverIO** (WDIO) 
 - **POM Architecture** for structured and maintainable tests.
 -  **UI Tests** with WebdriverIO and Selenium/WebDriver.
 - **API Tests** using Axios and Chai.
-- **Allure Reports** for detailed test reporting.
+- **HTML reports** for detailed test reporting.
 - **Jenkins Integration** for CI/CD.
 
 ---
