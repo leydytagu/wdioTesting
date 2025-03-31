@@ -2,6 +2,7 @@
   "name": "task-wdio",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "wdio": "wdio run src/configs/wdio.conf.js",
     "api-test": "wdio run src/configs/wdio.conf.js --spec src/tests/api/trello-api.spec.js"
@@ -11,11 +12,16 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@rpii/wdio-html-reporter-pdf": "^8.0.7",
     "@wdio/cli": "^9.9.3",
     "@wdio/local-runner": "^9.9.3",
     "@wdio/mocha-framework": "^9.9.0",
-    "@wdio/spec-reporter": "^9.9.0",
+    "@wdio/spec-reporter": "^9.12.2",
     "axios": "^1.8.4",
-    "chai": "^5.2.0"
+    "chai": "^5.2.0",
+    "wdio-html-nice-reporter": "^8.1.7"
+  },
+  "dependencies": {
+    "puppeteer": "^24.4.0"
   }
 }

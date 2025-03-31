@@ -1,6 +1,9 @@
-const {ReportGenerator, HtmlReporter} = require('wdio-html-nice-reporter');
+const { ReportGenerator} = require('wdio-html-nice-reporter');
+const { generatePDF } = require('@rpii/wdio-html-reporter-pdf');
+
 
 let reportAggregator;
+
 exports.config = {
     //
     // ====================
@@ -151,16 +154,18 @@ exports.config = {
                 color: true,
             },
         ],
-
-        ['html-nice', {
-            outputDir: './reports/html-reports/',
-            filename: 'report.html',
-            reportTitle: 'Test Report Title',
-            linkScreenshots: true,
-            showInBrowser: true,
-            collapseTests: false,
-            useOnAfterCommandForScreenshot: false
-        }]
+        [
+            'html-nice',
+            {
+                outputDir: './reports/html-reports/',
+                filename: 'report.html',
+                reportTitle: 'WDIO Test Report',
+                linkScreenshots: true,
+                showInBrowser: true,
+                collapseTests: false,
+                useOnAfterCommandForScreenshot: false,
+            },
+        ],
     ],
 
     // Options to be passed to Mocha.
@@ -183,14 +188,12 @@ exports.config = {
      * Gets executed once before all workers get launched.
      */
 
-    onPrepare: function(config, capabilities) {
-
+    onPrepare: function () {
         reportAggregator = new ReportGenerator({
             outputDir: './reports/html-reports/',
             filename: 'master-report.html',
             reportTitle: 'Master Report',
-            browserName: capabilities.browserName,
-            collapseTests: true
+            collapseTests: true,
         });
         reportAggregator.clean();
     },
@@ -316,11 +319,13 @@ exports.config = {
      * thrown in the onComplete hook will result in the test run failing.
      */
 
-    onComplete: async function(exitCode, config, capabilities, results) {
+    onComplete: async function () {
         await reportAggregator.createReport();
-    }
-
-
+        await generatePDF({
+            sourcePath: './reports/html-reports/master-report.html',
+            outputPath: './reports/html-reports/master-report.pdf'
+        });
+    },
 
     /**
      * Gets executed when a refresh happens.
