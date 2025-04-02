@@ -1,6 +1,3 @@
-const {ReportGenerator, HtmlReporter} = require('wdio-html-nice-reporter');
-
-let reportAggregator;
 exports.config = {
     //
     // ====================
@@ -59,12 +56,12 @@ exports.config = {
                 args: ['--headless', '--disable-gpu', '--window-size=1280,800']
             }
         },
-        {
-            browserName: 'firefox',
-            'moz:firefoxOptions': {
-                args: ['--headless', '--width=1280', '--height=800']
-            }
-        },
+        //{
+            //browserName: 'firefox',
+            //'moz:firefoxOptions': {
+              //  args: ['--headless', '--width=1280', '--height=800']
+           // }
+        //},
         //{
         // browserName: 'safari'
         //}
@@ -77,7 +74,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -153,15 +150,30 @@ exports.config = {
         ],
 
         ['html-nice', {
-            outputDir: './reports/html-reports/',
-            filename: 'report.html',
-            reportTitle: 'Test Report Title',
+            outputDir: './reports',
+            filename: 'html-report.html',
+            reportTitle: 'HTML Report',
             linkScreenshots: true,
             showInBrowser: true,
             collapseTests: false,
             useOnAfterCommandForScreenshot: false
         }]
     ],
+
+    before: function (capabilities, specs) {
+        browser.maximizeWindow();
+    },
+
+    beforeScenario: async () => {
+        await browser.reloadSession();
+    },
+
+    afterTest: function (test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            browser.takeScreenshot();
+        }
+    },
+
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -182,18 +194,6 @@ exports.config = {
     /**
      * Gets executed once before all workers get launched.
      */
-
-    onPrepare: function(config, capabilities) {
-
-        reportAggregator = new ReportGenerator({
-            outputDir: './reports/html-reports/',
-            filename: 'master-report.html',
-            reportTitle: 'Master Report',
-            browserName: capabilities.browserName,
-            collapseTests: true
-        });
-        reportAggregator.clean();
-    },
 
 
     /**
@@ -317,8 +317,7 @@ exports.config = {
      */
 
     onComplete: async function(exitCode, config, capabilities, results) {
-        await reportAggregator.createReport();
-    }
+        console.log('Tests completed with exit code:', exitCode);    }
 
 
 
