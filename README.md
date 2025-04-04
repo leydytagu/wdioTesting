@@ -3,8 +3,9 @@
 This project is a **test automation framework** based on **WebdriverIO** (WDIO) using the **Page Object Model (POM)** architecture. It is designed for efficient UI and API test execution.
 
 ## Features
+
 - **POM Architecture** for structured and maintainable tests.
--  **UI Tests** with WebdriverIO and Selenium/WebDriver.
+- **UI Tests** with WebdriverIO and Selenium/WebDriver.
 - **API Tests** using Axios and Chai.
 - **HTML reports** for detailed test reporting.
 - **Jenkins Integration** for CI/CD.
@@ -12,15 +13,18 @@ This project is a **test automation framework** based on **WebdriverIO** (WDIO) 
 ---
 
 ## Requirements
+
 Before getting started, make sure you have the following installed:
+
 - **Node.js** `>= 16.x`
-- **npm** or **yarn`
+- **npm** or \*\*yarn`
 - **ChromeDriver / Geckodriver** (depending on the browser)
 - **Jenkins (Optional)** for CI/CD
 
 ---
 
 ## Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/leydytagu/wdioTesting.git
@@ -34,6 +38,7 @@ Before getting started, make sure you have the following installed:
 ---
 
 ## Configuration
+
 1. **Environment Variables:**  
    Create a `.env` file in the project root:
    ```plaintext
@@ -49,21 +54,25 @@ Before getting started, make sure you have the following installed:
 ## Running Tests
 
 ### Run All Tests
+
 ```bash
 npm run wdio
 ```
 
 ### Run API Tests Only
+
 ```bash
 npm run wdio-api
 ```
 
 ### Run UI Tests Only
+
 ```bash
 npm run wdio-ui
 ```
 
 ### Generate Allure Reports
+
 ```bash
 npm run allure-report
 ```
@@ -71,7 +80,9 @@ npm run allure-report
 ---
 
 ## Jenkins Integration
+
 To run tests in Jenkins:
+
 1. Create a **Pipeline Job** in Jenkins.
 2. Use the following `Jenkinsfile` configuration:
    ```groovy
@@ -112,10 +123,9 @@ To run tests in Jenkins:
 ## Contributing
 
 This project was created by Leydy Tarazona (leydy.tarazona@gmail.com). If you wish to contribute:
+
 1. Fork the repository.
 2. Create a feature branch (feature/new-feature).
 3. Submit a Pull Request.
 
 ---
-
-

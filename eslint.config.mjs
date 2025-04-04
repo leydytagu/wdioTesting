@@ -1,0 +1,28 @@
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import js from '@eslint/js';
+
+export default defineConfig([
+  { files: ['**/*.{js,mjs,cjs}'] },
+  { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
+  { files: ['**/*.{js,mjs,cjs}'], languageOptions: { globals: globals.browser } },
+  {
+    files: ['**/*.{js,mjs,cjs}'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        before: 'readonly',
+        after: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        browser: 'readonly',
+        $: 'readonly',
+        $$: 'readonly',
+        expect: 'readonly',
+      },
+    },
+    plugins: { js },
+    extends: ['js/recommended'],
+  },
+]);
