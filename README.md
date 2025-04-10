@@ -62,19 +62,25 @@ npm run wdio
 ### Run API Tests Only
 
 ```bash
-npm run wdio-api
+npm run test:api
 ```
 
 ### Run UI Tests Only
 
 ```bash
-npm run wdio-ui
+npm run test:ui
 ```
 
-### Generate Allure Reports
+### Run Cucumber Tests Only
 
 ```bash
-npm run allure-report
+npm run test:cucumber
+```
+
+### Run Specific Cucumber Test
+
+```bash
+Run `npm run test:cucumber -- --cucumberOpts.tagExpression='@tagName'`
 ```
 
 ---
@@ -98,19 +104,19 @@ To run tests in Jenkins:
                parallel {
                    stage('UI Tests') {
                        steps {
-                           sh 'npm run wdio-ui'
+                           sh 'npm run test:ui'
                        }
                    }
                    stage('API Tests') {
                        steps {
-                           sh 'npm run wdio-api'
+                           sh 'npm run test:api'
                        }
                    }
-               }
-           }
-           stage('Generate Report') {
-               steps {
-                   sh 'npm run allure-report'
+                   stage('Cucumber Tests') {
+                       steps {
+                           sh 'npm run test:cucumber'
+                       }
+                   }
                }
            }
        }

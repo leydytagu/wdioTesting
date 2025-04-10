@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "wdio": "wdio run src/configs/wdio.conf.js",
-    "api-test": "wdio run src/configs/wdio.conf.js --spec src/tests/api/trello-api.spec.js",
+    "test:ui": "wdio run src/configs/wdio.conf.js --spec src/tests/**/*.spec.js",
+    "test:api": "wdio run src/configs/wdio.conf.js --spec src/tests/api/trello-api.spec.js",
+    "test:cucumber": "wdio run src/configs/wdio.cucumber.conf.js",
     "lint": "eslint . --quiet && echo \"No ESLint errors found!\"",
     "format": "prettier --write .",
     "lint:fix": "eslint . --fix"
@@ -14,9 +16,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
     "@eslint/js": "^9.23.0",
     "@rpii/wdio-html-reporter-pdf": "^8.0.7",
     "@wdio/cli": "^9.9.3",
+    "@wdio/cucumber-framework": "^9.12.3",
     "@wdio/local-runner": "^9.9.3",
     "@wdio/mocha-framework": "^9.9.0",
     "@wdio/spec-reporter": "^9.12.2",
