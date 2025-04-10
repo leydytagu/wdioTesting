@@ -19,10 +19,10 @@ export default defineConfig([
         browser: 'readonly',
         $: 'readonly',
         $$: 'readonly',
-        expect: 'readonly',
-      },
+        expect: 'readonly'
+      }
     },
     plugins: { js },
-    extends: ['js/recommended'],
-  },
+    extends: ['js/recommended']
+  }
 ]);

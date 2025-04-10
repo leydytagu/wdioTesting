@@ -1,5 +1,5 @@
 const { Header } = require('../components');
-const { openUrl } = require("../../configs/utils/helpers/common");
+const { openUrl } = require('../../configs/utils/helpers/common');
 
 class BasePage {
   constructor(url) {

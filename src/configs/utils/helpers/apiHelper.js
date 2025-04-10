@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { BASE_URL, TRELLO_API_KEY, TRELLO_TOKEN } = require("../../endpoints");
+const { BASE_URL, TRELLO_API_KEY, TRELLO_TOKEN } = require('../../endpoints');
 
 class ApiHelper {
   constructor() {

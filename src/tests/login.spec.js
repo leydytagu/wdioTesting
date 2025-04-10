@@ -2,7 +2,7 @@ const { page } = require('../po');
 const { assert, expect } = require('chai');
 
 const credentials = require('../configs/test.data.');
-const { getCurrentUrl } = require("../configs/utils/helpers/common");
+const { getCurrentUrl } = require('../configs/utils/helpers/common');
 
 describe('Login Page Tests', () => {
   it('Should redirect login pages', async () => {
@@ -24,7 +24,7 @@ describe('Login Page Tests', () => {
     await page('login').clickContinueButton();
 
     const errorMessage = await page('login').getLoginError();
-    await errorMessage.waitForDisplayed({timeout: 5000});
+    await errorMessage.waitForDisplayed({ timeout: 5000 });
     assert.equal(await errorMessage.isDisplayed(), true);
   });
 
@@ -38,7 +38,7 @@ describe('Login Page Tests', () => {
     await page('login').enterPassword(credentials.password);
     await page('login').clickContinueButton();
 
-    await page('login').isLoggedIn(credentials.user)
+    await page('login').isLoggedIn(credentials.user);
 
     const currentUrl = await getCurrentUrl();
     expect(currentUrl).to.contain(`trello.com/u/${credentials.user}/boards`);

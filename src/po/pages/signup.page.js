@@ -1,5 +1,5 @@
-const BasePage = require("./base.page");
-const { openUrl } = require("../../configs/utils/helpers/common");
+const BasePage = require('./base.page');
+const { openUrl } = require('../../configs/utils/helpers/common');
 
 class SignupPage extends BasePage {
   constructor() {

@@ -1,4 +1,4 @@
-const BasePage = require("./base.page");
+const BasePage = require('./base.page');
 
 class ProfilePage extends BasePage {
   constructor() {
@@ -22,7 +22,7 @@ class ProfilePage extends BasePage {
   }
 
   get saveButton() {
-    const selector = '//button[normalize-space(text())=\'Guardar\']';
+    const selector = "//button[normalize-space(text())='Guardar']";
     return $(selector);
   }
 

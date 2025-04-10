@@ -15,7 +15,7 @@ describe('Board Page Tests', () => {
     await page('board').clickCreateBoardSubmitButton();
 
     const boardNameDisplay = await page('board').boardNameDisplayField;
-    await boardNameDisplay.waitForDisplayed({timeout: 5000});
+    await boardNameDisplay.waitForDisplayed({ timeout: 5000 });
     assert.equal(await boardNameDisplay.isDisplayed(), true);
 
     await page('login').logout();

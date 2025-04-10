@@ -12,7 +12,7 @@ function page(name) {
     login: new LoginPage(),
     board: new BoardPage(),
     profile: new ProfilePage(),
-    signup: new SignupPage(),
+    signup: new SignupPage()
   };
   return items[name.toLowerCase()];
 }
@@ -22,5 +22,5 @@ module.exports = {
   BoardPage,
   ProfilePage,
   SignupPage,
-  page,
+  page
 };

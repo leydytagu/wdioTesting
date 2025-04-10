@@ -1,6 +1,6 @@
-const BasePage = require("./base.page");
-const { Header } = require("../components");
-const { getCurrentUrl } = require("../../configs/utils/helpers/common");
+const BasePage = require('./base.page');
+const { Header } = require('../components');
+const { getCurrentUrl } = require('../../configs/utils/helpers/common');
 
 class LoginPage extends BasePage {
   constructor() {
@@ -46,13 +46,10 @@ class LoginPage extends BasePage {
   }
 
   async enterPassword(password) {
-    await browser.waitUntil(
-      async () => (await this.passwordField.isDisplayed()),
-      {
-        timeout: 5000,
-        timeoutMsg: "Password field is not available"
-      }
-    );
+    await browser.waitUntil(async () => await this.passwordField.isDisplayed(), {
+      timeout: 5000,
+      timeoutMsg: 'Password field is not available'
+    });
     await this.passwordField.setValue(password);
   }
 
@@ -94,10 +91,10 @@ class LoginPage extends BasePage {
 
   async isLoggedIn(user) {
     await browser.waitUntil(
-      async () =>
-        (await getCurrentUrl()).includes(`trello.com/u/${user}/boards`), {
+      async () => (await getCurrentUrl()).includes(`trello.com/u/${user}/boards`),
+      {
         timeout: 15000,
-        timeoutMsg: "Home url not found"
+        timeoutMsg: 'Home url not found'
       }
     );
   }

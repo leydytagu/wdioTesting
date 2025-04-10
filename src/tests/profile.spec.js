@@ -1,5 +1,5 @@
-const { page } = require("../po/pages");
-const { getCurrentUrl } = require("../configs/utils/helpers/common");
+const { page } = require('../po/pages');
+const { getCurrentUrl } = require('../configs/utils/helpers/common');
 const credentials = require('../configs/test.data.');
 
 describe('Edit Profile Page Tests', () => {
