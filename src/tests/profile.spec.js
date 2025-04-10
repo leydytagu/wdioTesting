@@ -1,6 +1,6 @@
 const { page } = require('../po/pages');
 const { getCurrentUrl } = require('../configs/utils/helpers/common');
-const credentials = require('../configs/test.data.');
+const credentials = require('../configs/test.data');
 
 describe('Edit Profile Page Tests', () => {
   it('Should update username successfully', async () => {

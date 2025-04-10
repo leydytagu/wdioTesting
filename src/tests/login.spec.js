@@ -1,7 +1,7 @@
 const { page } = require('../po');
 const { assert, expect } = require('chai');
 
-const credentials = require('../configs/test.data.');
+const credentials = require('../configs/test.data');
 const { getCurrentUrl } = require('../configs/utils/helpers/common');
 
 describe('Login Page Tests', () => {

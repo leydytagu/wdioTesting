@@ -1,7 +1,7 @@
 const { page } = require('../po');
 const { assert, expect } = require('chai');
 
-const credentials = require('../configs/test.data.');
+const credentials = require('../configs/test.data');
 
 describe('Board Page Tests', () => {
   it('Should create board successfully', async () => {

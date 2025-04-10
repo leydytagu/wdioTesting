@@ -1,7 +1,7 @@
 const { page } = require('../po/pages');
 const { getCurrentUrl } = require('../configs/utils/helpers/common');
 
-const credentials = require('../configs/test.data.');
+const credentials = require('../configs/test.data');
 
 describe('Register Page Tests', () => {
   it('Should enter email and complete signup', async () => {
